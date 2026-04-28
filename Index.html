@@ -1,0 +1,1044 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>那嚕灣森林民宿 — 回歸自然的心靈歸所</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;400;600&family=Noto+Sans+TC:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --forest-dark: #1a2e1a;
+    --forest-mid: #2d4a2d;
+    --forest-light: #4a7c59;
+    --moss: #7a9e6e;
+    --sage: #a8c49a;
+    --cream: #f5f0e8;
+    --warm-white: #faf8f3;
+    --bark: #6b4c3b;
+    --earth: #8c6e55;
+    --gold: #c9a84c;
+    --gold-light: #e2c97e;
+    --text-dark: #1c2b1c;
+    --text-mid: #4a5e4a;
+    --text-light: #7a8e7a;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Noto Sans TC', sans-serif;
+    background: var(--warm-white);
+    color: var(--text-dark);
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.2rem 4rem;
+    background: rgba(26, 46, 26, 0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(201, 168, 76, 0.2);
+  }
+  .nav-logo {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 1.4rem;
+    color: var(--gold-light);
+    letter-spacing: 0.1em;
+    font-weight: 400;
+  }
+  .nav-logo span { font-size: 0.75rem; display: block; color: var(--sage); letter-spacing: 0.2em; margin-top: 2px; }
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+  .nav-links a { color: rgba(245,240,232,0.8); text-decoration: none; font-size: 0.9rem; letter-spacing: 0.05em; transition: color 0.3s; font-weight: 300; }
+  .nav-links a:hover { color: var(--gold-light); }
+  .nav-book {
+    background: var(--gold);
+    color: var(--forest-dark);
+    border: none; cursor: pointer;
+    padding: 0.6rem 1.8rem;
+    font-family: 'Noto Sans TC', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    transition: all 0.3s;
+  }
+  .nav-book:hover { background: var(--gold-light); }
+
+  /* HERO */
+  .hero {
+    height: 100vh;
+    background: linear-gradient(160deg, #0d1f0d 0%, #1a3320 40%, #2d4a2d 70%, #3d6b45 100%);
+    display: flex; align-items: center; justify-content: center;
+    position: relative; overflow: hidden;
+  }
+  .hero-bg-pattern {
+    position: absolute; inset: 0;
+    background-image:
+      radial-gradient(ellipse at 20% 50%, rgba(74,124,89,0.3) 0%, transparent 50%),
+      radial-gradient(ellipse at 80% 20%, rgba(45,74,45,0.4) 0%, transparent 40%),
+      radial-gradient(ellipse at 60% 80%, rgba(26,46,26,0.6) 0%, transparent 50%);
+  }
+  .hero-leaves {
+    position: absolute; inset: 0; overflow: hidden;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='600'%3E%3Cellipse cx='100' cy='100' rx='80' ry='30' fill='rgba(74,124,89,0.08)' transform='rotate(-30,100,100)'/%3E%3Cellipse cx='400' cy='200' rx='100' ry='35' fill='rgba(122,158,110,0.06)' transform='rotate(20,400,200)'/%3E%3Cellipse cx='250' cy='450' rx='90' ry='28' fill='rgba(45,74,45,0.1)' transform='rotate(-15,250,450)'/%3E%3Cellipse cx='500' cy='400' rx='70' ry='25' fill='rgba(74,124,89,0.07)' transform='rotate(40,500,400)'/%3E%3C/svg%3E");
+    animation: floatLeaves 20s ease-in-out infinite alternate;
+  }
+  @keyframes floatLeaves { from { transform: translate(0,0) rotate(0deg); } to { transform: translate(15px,10px) rotate(2deg); } }
+
+  .hero-content { position: relative; text-align: center; color: var(--cream); }
+  .hero-badge {
+    display: inline-block;
+    border: 1px solid rgba(201,168,76,0.5);
+    color: var(--gold-light);
+    font-size: 0.72rem;
+    letter-spacing: 0.25em;
+    padding: 0.4rem 1.5rem;
+    margin-bottom: 2rem;
+    font-weight: 300;
+    animation: fadeUp 1s ease 0.2s both;
+  }
+  .hero-title {
+    font-family: 'Noto Serif TC', serif;
+    font-size: clamp(3.5rem, 8vw, 6rem);
+    font-weight: 300;
+    line-height: 1.15;
+    letter-spacing: 0.08em;
+    margin-bottom: 0.5rem;
+    animation: fadeUp 1s ease 0.4s both;
+  }
+  .hero-title-en {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: clamp(1rem, 2.5vw, 1.5rem);
+    color: var(--sage);
+    letter-spacing: 0.15em;
+    margin-bottom: 1.8rem;
+    animation: fadeUp 1s ease 0.6s both;
+  }
+  .hero-desc {
+    font-size: 1rem;
+    color: rgba(245,240,232,0.7);
+    max-width: 460px;
+    margin: 0 auto 3rem;
+    line-height: 1.9;
+    font-weight: 300;
+    animation: fadeUp 1s ease 0.8s both;
+  }
+  .hero-cta {
+    display: flex; gap: 1.2rem; justify-content: center; flex-wrap: wrap;
+    animation: fadeUp 1s ease 1s both;
+  }
+  .btn-primary {
+    background: var(--gold);
+    color: var(--forest-dark);
+    border: none; cursor: pointer;
+    padding: 1rem 3rem;
+    font-family: 'Noto Sans TC', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    transition: all 0.3s;
+  }
+  .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); }
+  .btn-outline {
+    background: transparent;
+    color: var(--cream);
+    border: 1px solid rgba(245,240,232,0.4);
+    cursor: pointer;
+    padding: 1rem 3rem;
+    font-family: 'Noto Sans TC', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 300;
+    letter-spacing: 0.1em;
+    transition: all 0.3s;
+  }
+  .btn-outline:hover { border-color: var(--gold-light); color: var(--gold-light); }
+
+  .hero-scroll {
+    position: absolute; bottom: 2.5rem; left: 50%; transform: translateX(-50%);
+    display: flex; flex-direction: column; align-items: center; gap: 8px;
+    color: rgba(245,240,232,0.4); font-size: 0.72rem; letter-spacing: 0.2em;
+    animation: bounceDown 2s ease-in-out infinite;
+  }
+  .scroll-line { width: 1px; height: 40px; background: rgba(201,168,76,0.4); }
+
+  @keyframes fadeUp { from { opacity:0; transform:translateY(20px); } to { opacity:1; transform:translateY(0); } }
+  @keyframes bounceDown { 0%,100% { transform:translateX(-50%) translateY(0); } 50% { transform:translateX(-50%) translateY(6px); } }
+
+  /* SEARCH BAR */
+  .search-section {
+    background: var(--forest-dark);
+    padding: 2.5rem 4rem;
+    display: flex; align-items: flex-end; gap: 1.5rem; flex-wrap: wrap;
+    border-bottom: 3px solid var(--gold);
+  }
+  .search-group { flex: 1; min-width: 180px; }
+  .search-group label {
+    display: block;
+    color: var(--sage);
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    margin-bottom: 0.6rem;
+    font-weight: 300;
+  }
+  .search-group input, .search-group select {
+    width: 100%;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(201,168,76,0.3);
+    color: var(--cream);
+    padding: 0.75rem 1rem;
+    font-family: 'Noto Sans TC', sans-serif;
+    font-size: 0.9rem;
+    outline: none;
+    transition: border-color 0.3s;
+  }
+  .search-group input:focus, .search-group select:focus { border-color: var(--gold); }
+  .search-group select option { background: var(--forest-dark); }
+  .search-btn {
+    background: var(--gold);
+    color: var(--forest-dark);
+    border: none; cursor: pointer;
+    padding: 0.75rem 2.5rem;
+    font-family: 'Noto Sans TC', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    white-space: nowrap;
+    transition: all 0.3s;
+    height: 46px;
+  }
+  .search-btn:hover { background: var(--gold-light); }
+
+  /* SECTION COMMON */
+  section { padding: 6rem 4rem; }
+  .section-label {
+    font-size: 0.72rem;
+    letter-spacing: 0.3em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    font-weight: 400;
+  }
+  .section-title {
+    font-family: 'Noto Serif TC', serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 300;
+    color: var(--text-dark);
+    line-height: 1.3;
+    margin-bottom: 1.2rem;
+  }
+  .section-desc {
+    color: var(--text-mid);
+    line-height: 1.9;
+    font-size: 0.95rem;
+    font-weight: 300;
+    max-width: 560px;
+  }
+
+  /* FEATURES */
+  .features-section { background: var(--warm-white); }
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    margin-top: 4rem;
+  }
+  .feature-card {
+    padding: 2.5rem 2rem;
+    border: 1px solid rgba(74,124,89,0.15);
+    background: white;
+    transition: all 0.4s;
+    position: relative;
+  }
+  .feature-card::before {
+    content: '';
+    position: absolute; bottom: 0; left: 0;
+    width: 100%; height: 3px;
+    background: var(--gold);
+    transform: scaleX(0); transform-origin: left;
+    transition: transform 0.4s;
+  }
+  .feature-card:hover { transform: translateY(-6px); box-shadow: 0 20px 40px rgba(26,46,26,0.1); }
+  .feature-card:hover::before { transform: scaleX(1); }
+  .feature-icon {
+    width: 48px; height: 48px;
+    background: rgba(74,124,89,0.1);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 1.5rem;
+    font-size: 1.4rem;
+  }
+  .feature-title { font-family: 'Noto Serif TC', serif; font-size: 1.1rem; margin-bottom: 0.8rem; color: var(--forest-mid); font-weight: 400; }
+  .feature-desc { font-size: 0.88rem; color: var(--text-mid); line-height: 1.8; font-weight: 300; }
+
+  /* ROOMS */
+  .rooms-section { background: #f0ece2; }
+  .rooms-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 3.5rem; flex-wrap: wrap; gap: 1rem; }
+  .rooms-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
+  .room-card {
+    background: white;
+    overflow: hidden;
+    transition: transform 0.4s;
+  }
+  .room-card:hover { transform: translateY(-4px); }
+  .room-img {
+    height: 240px;
+    position: relative; overflow: hidden;
+  }
+  .room-img-bg {
+    width: 100%; height: 100%;
+    transition: transform 0.6s;
+  }
+  .room-card:hover .room-img-bg { transform: scale(1.06); }
+  .room-badge {
+    position: absolute; top: 1rem; right: 1rem;
+    background: var(--gold);
+    color: var(--forest-dark);
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    padding: 0.3rem 0.8rem;
+    font-weight: 500;
+  }
+  .room-info { padding: 1.8rem; }
+  .room-name { font-family: 'Noto Serif TC', serif; font-size: 1.3rem; color: var(--forest-dark); margin-bottom: 0.5rem; font-weight: 400; }
+  .room-name-en { font-family: 'Playfair Display', serif; font-style: italic; font-size: 0.85rem; color: var(--text-light); margin-bottom: 1rem; }
+  .room-features { display: flex; gap: 1rem; margin-bottom: 1.5rem; flex-wrap: wrap; }
+  .room-tag { font-size: 0.78rem; color: var(--forest-light); background: rgba(74,124,89,0.08); padding: 0.2rem 0.7rem; border-radius: 2px; }
+  .room-footer { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid rgba(0,0,0,0.06); padding-top: 1.2rem; }
+  .room-price { font-family: 'Noto Serif TC', serif; }
+  .room-price .amount { font-size: 1.6rem; color: var(--forest-dark); font-weight: 600; }
+  .room-price .per { font-size: 0.8rem; color: var(--text-light); font-weight: 300; }
+  .room-book {
+    background: var(--forest-dark);
+    color: var(--cream);
+    border: none; cursor: pointer;
+    padding: 0.6rem 1.5rem;
+    font-family: 'Noto Sans TC', sans-serif;
+    font-size: 0.85rem;
+    letter-spacing: 0.05em;
+    transition: all 0.3s;
+  }
+  .room-book:hover { background: var(--forest-light); }
+
+  /* GALLERY */
+  .gallery-section { background: var(--forest-dark); padding: 6rem 4rem; }
+  .gallery-section .section-title { color: var(--cream); }
+  .gallery-section .section-label { color: var(--gold); }
+  .gallery-section .section-desc { color: rgba(245,240,232,0.6); }
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    grid-template-rows: 200px 200px;
+    gap: 1rem;
+    margin-top: 3rem;
+  }
+  .gallery-item { overflow: hidden; position: relative; }
+  .gallery-item:first-child { grid-row: 1 / 3; }
+  .gallery-item-bg { width: 100%; height: 100%; transition: transform 0.6s; }
+  .gallery-item:hover .gallery-item-bg { transform: scale(1.08); }
+  .gallery-overlay {
+    position: absolute; inset: 0;
+    background: rgba(26,46,26,0.3);
+    display: flex; align-items: flex-end; padding: 1.2rem;
+    opacity: 0; transition: opacity 0.3s;
+  }
+  .gallery-item:hover .gallery-overlay { opacity: 1; }
+  .gallery-overlay-text { font-size: 0.8rem; color: var(--cream); letter-spacing: 0.1em; }
+
+  /* TESTIMONIALS */
+  .testimonials-section { background: var(--cream); }
+  .testimonials-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; margin-top: 4rem; }
+  .testimonial-card { background: white; padding: 2.5rem; position: relative; border-left: 3px solid var(--gold); }
+  .testimonial-quote { font-family: 'Noto Serif TC', serif; font-size: 2.5rem; color: var(--gold); line-height: 1; margin-bottom: 1rem; }
+  .testimonial-text { font-size: 0.9rem; line-height: 1.9; color: var(--text-mid); font-weight: 300; margin-bottom: 1.5rem; }
+  .testimonial-author { display: flex; align-items: center; gap: 1rem; }
+  .author-avatar {
+    width: 42px; height: 42px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.85rem; font-weight: 500;
+    background: rgba(74,124,89,0.12); color: var(--forest-light);
+  }
+  .author-name { font-size: 0.9rem; font-weight: 500; color: var(--text-dark); }
+  .author-date { font-size: 0.78rem; color: var(--text-light); }
+  .stars { color: var(--gold); font-size: 0.85rem; margin-bottom: 0.3rem; }
+
+  /* BOOKING FORM */
+  .booking-section {
+    background: var(--forest-mid);
+    padding: 6rem 4rem;
+  }
+  .booking-container { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
+  .booking-section .section-title { color: var(--cream); }
+  .booking-section .section-label { color: var(--gold); }
+  .booking-section .section-desc { color: rgba(245,240,232,0.6); }
+  .booking-info-items { margin-top: 2.5rem; display: flex; flex-direction: column; gap: 1.5rem; }
+  .booking-info-item { display: flex; gap: 1rem; align-items: flex-start; }
+  .booking-info-icon { color: var(--gold); font-size: 1.1rem; margin-top: 2px; min-width: 24px; }
+  .booking-info-title { font-size: 0.9rem; color: var(--cream); margin-bottom: 0.3rem; }
+  .booking-info-text { font-size: 0.82rem; color: rgba(245,240,232,0.5); line-height: 1.7; font-weight: 300; }
+
+  .booking-form { background: rgba(255,255,255,0.06); padding: 2.5rem; border: 1px solid rgba(201,168,76,0.2); }
+  .booking-form h3 { font-family: 'Noto Serif TC', serif; color: var(--gold-light); font-size: 1.2rem; font-weight: 400; margin-bottom: 2rem; letter-spacing: 0.05em; }
+  .form-group { margin-bottom: 1.5rem; }
+  .form-group label { display: block; font-size: 0.78rem; letter-spacing: 0.15em; color: var(--sage); margin-bottom: 0.6rem; font-weight: 300; }
+  .form-group input, .form-group select, .form-group textarea {
+    width: 100%;
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(201,168,76,0.25);
+    color: var(--cream);
+    padding: 0.8rem 1rem;
+    font-family: 'Noto Sans TC', sans-serif;
+    font-size: 0.9rem;
+    outline: none;
+    transition: border-color 0.3s;
+    resize: none;
+  }
+  .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--gold); }
+  .form-group select option { background: var(--forest-mid); }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .form-submit {
+    width: 100%;
+    background: var(--gold);
+    color: var(--forest-dark);
+    border: none; cursor: pointer;
+    padding: 1rem;
+    font-family: 'Noto Sans TC', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    margin-top: 0.5rem;
+    transition: all 0.3s;
+  }
+  .form-submit:hover { background: var(--gold-light); }
+
+  /* FOOTER */
+  footer {
+    background: var(--forest-dark);
+    border-top: 1px solid rgba(201,168,76,0.2);
+    padding: 4rem;
+    display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem;
+  }
+  .footer-brand .logo { font-family: 'Noto Serif TC', serif; font-size: 1.3rem; color: var(--gold-light); letter-spacing: 0.08em; font-weight: 400; margin-bottom: 1rem; }
+  .footer-brand p { font-size: 0.85rem; color: rgba(245,240,232,0.45); line-height: 1.8; font-weight: 300; max-width: 240px; }
+  .footer-brand .contact { margin-top: 1.5rem; font-size: 0.82rem; color: rgba(245,240,232,0.5); line-height: 2; font-weight: 300; }
+  .footer-col h4 { font-size: 0.75rem; letter-spacing: 0.2em; color: var(--gold); margin-bottom: 1.2rem; font-weight: 400; }
+  .footer-col ul { list-style: none; }
+  .footer-col ul li { margin-bottom: 0.7rem; }
+  .footer-col ul li a { color: rgba(245,240,232,0.5); text-decoration: none; font-size: 0.85rem; transition: color 0.3s; font-weight: 300; }
+  .footer-col ul li a:hover { color: var(--gold-light); }
+  .footer-bottom {
+    background: rgba(0,0,0,0.3);
+    padding: 1.2rem 4rem;
+    display: flex; justify-content: space-between; align-items: center;
+    border-top: 1px solid rgba(255,255,255,0.05);
+  }
+  .footer-bottom p { font-size: 0.78rem; color: rgba(245,240,232,0.3); font-weight: 300; }
+
+  /* Modal */
+  .modal-overlay {
+    display: none; position: fixed; inset: 0; z-index: 200;
+    background: rgba(0,0,0,0.7); align-items: center; justify-content: center;
+  }
+  .modal-overlay.active { display: flex; }
+  .modal {
+    background: white; max-width: 480px; width: 90%;
+    padding: 3rem; position: relative;
+    animation: fadeUp 0.3s ease;
+  }
+  .modal-close {
+    position: absolute; top: 1rem; right: 1.5rem;
+    background: none; border: none; cursor: pointer;
+    font-size: 1.5rem; color: var(--text-light);
+  }
+  .modal h3 { font-family: 'Noto Serif TC', serif; color: var(--forest-dark); font-size: 1.5rem; margin-bottom: 0.5rem; font-weight: 400; }
+  .modal p { font-size: 0.88rem; color: var(--text-mid); margin-bottom: 2rem; font-weight: 300; }
+  .modal .success-icon { font-size: 3rem; margin-bottom: 1rem; }
+
+  /* Color swatches for room SVGs */
+  .room-forest { background: linear-gradient(135deg, #1a3320 0%, #2d4a2d 40%, #4a7c59 70%, #7a9e6e 100%); }
+  .room-earth { background: linear-gradient(135deg, #3d2b1f 0%, #6b4c3b 40%, #8c6e55 70%, #a88572 100%); }
+  .room-sky { background: linear-gradient(135deg, #1a2640 0%, #2d3f5e 40%, #4a6080 70%, #7a9aae 100%); }
+
+  @media (max-width: 900px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+    section { padding: 4rem 1.5rem; }
+    .search-section { padding: 2rem 1.5rem; }
+    .gallery-grid { grid-template-columns: 1fr 1fr; grid-template-rows: auto; }
+    .gallery-item:first-child { grid-row: auto; }
+    .booking-container { grid-template-columns: 1fr; gap: 3rem; }
+    footer { grid-template-columns: 1fr 1fr; padding: 3rem 1.5rem; }
+    .footer-bottom { padding: 1rem 1.5rem; flex-direction: column; gap: 0.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">
+    那嚕灣森林民宿
+    <span>NALUWAN FOREST VILLA</span>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#rooms">客房介紹</a></li>
+    <li><a href="#gallery">環境欣賞</a></li>
+    <li><a href="#testimonials">旅客心得</a></li>
+    <li><a href="#booking">聯繫訂房</a></li>
+  </ul>
+  <button class="nav-book" onclick="scrollToBooking()">立即訂房</button>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-bg-pattern"></div>
+  <div class="hero-leaves"></div>
+  <div class="hero-content">
+    <div class="hero-badge">NALUWAN FOREST VILLA · 台灣原始山林</div>
+    <h1 class="hero-title">那嚕灣<br>森林民宿</h1>
+    <p class="hero-title-en">Where the Forest Breathes</p>
+    <p class="hero-desc">隱藏於千年森林之中，讓晨霧與鳥鳴喚醒您的每一天。原住民文化的溫柔擁抱，自然療癒的純粹體驗。</p>
+    <div class="hero-cta">
+      <button class="btn-primary" onclick="scrollToBooking()">查詢空房與訂房</button>
+      <button class="btn-outline" onclick="document.getElementById('rooms').scrollIntoView({behavior:'smooth'})">探索客房</button>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <div class="scroll-line"></div>
+    <span>向下滑動</span>
+  </div>
+</section>
+
+<!-- SEARCH -->
+<div class="search-section">
+  <div class="search-group">
+    <label>入住日期 CHECK-IN</label>
+    <input type="date" id="checkin" />
+  </div>
+  <div class="search-group">
+    <label>退房日期 CHECK-OUT</label>
+    <input type="date" id="checkout" />
+  </div>
+  <div class="search-group">
+    <label>住客人數 GUESTS</label>
+    <select id="guests">
+      <option>1 位</option>
+      <option selected>2 位</option>
+      <option>3 位</option>
+      <option>4 位</option>
+      <option>5 位以上</option>
+    </select>
+  </div>
+  <div class="search-group">
+    <label>房型 ROOM TYPE</label>
+    <select id="roomtype">
+      <option value="">所有房型</option>
+      <option>山林套房</option>
+      <option>溪谷木屋</option>
+      <option>星空閣樓</option>
+    </select>
+  </div>
+  <button class="search-btn" onclick="searchRooms()">查詢空房</button>
+</div>
+
+<!-- FEATURES -->
+<section class="features-section">
+  <div class="section-label">EXPERIENCE · 那嚕灣體驗</div>
+  <h2 class="section-title">與山林共眠<br>的生活哲學</h2>
+  <p class="section-desc">我們相信，真正的休息不是逃離，而是回歸。那嚕灣提供最貼近自然的住宿體驗，讓身心在靜謐山林中找到平衡。</p>
+  <div class="features-grid">
+    <div class="feature-card">
+      <div class="feature-icon">🌿</div>
+      <div class="feature-title">原始森林環繞</div>
+      <p class="feature-desc">坐落於海拔800米山林之中，百年老樹參天，空氣清新富含負離子，是都市人最需要的天然解藥。</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🌿</div>
+      <div class="feature-title">部落文化體驗</div>
+      <p class="feature-desc">與在地原住民部落合作，提供傳統祭典文化導覽、手工藝DIY及道地山地料理，感受最真實的台灣山林文化。</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">✨</div>
+      <div class="feature-title">無光害星空</div>
+      <p class="feature-desc">遠離城市光害，夜晚躺在木棧台仰望銀河，用肉眼感受宇宙的浩瀚。提供天文望遠鏡免費借用。</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🍃</div>
+      <div class="feature-title">有機早餐服務</div>
+      <p class="feature-desc">每日精心準備在地有機蔬果、野菜、手工釀製品，以一頓豐盛的山林早餐迎接美好的一天。</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🛤</div>
+      <div class="feature-title">私人步道系統</div>
+      <p class="feature-desc">民宿內設有3條難易程度不同的生態步道，由專業嚮導帶領探索森林秘境，認識台灣原生植被。</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🧖</div>
+      <div class="feature-title">山泉水療設施</div>
+      <p class="feature-desc">引入山泉活水打造露天泡湯池，讓旅人在溫泉與星空之間放鬆身心，重拾最自在的自我。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ROOMS -->
+<section class="rooms-section" id="rooms">
+  <div class="rooms-header">
+    <div>
+      <div class="section-label">ROOMS · 客房介紹</div>
+      <h2 class="section-title">每一間<br>都是獨特的森林詩篇</h2>
+    </div>
+    <p class="section-desc">所有客房均採用天然木材與石材打造，保留山林原始紋理，讓您沉浸於大自然的懷抱。</p>
+  </div>
+  <div class="rooms-grid">
+    <!-- Room 1 -->
+    <div class="room-card">
+      <div class="room-img">
+        <div class="room-img-bg room-forest" style="display:flex;align-items:center;justify-content:center;">
+          <svg width="180" height="160" viewBox="0 0 180 160" fill="none">
+            <ellipse cx="90" cy="130" rx="80" ry="12" fill="rgba(0,0,0,0.2)"/>
+            <polygon points="90,20 130,100 50,100" fill="rgba(255,255,255,0.12)"/>
+            <polygon points="90,45 125,105 55,105" fill="rgba(255,255,255,0.09)"/>
+            <rect x="75" y="100" width="30" height="30" fill="rgba(0,0,0,0.3)"/>
+            <rect x="82" y="108" width="8" height="12" fill="rgba(255,255,255,0.15)"/>
+            <rect x="90" y="108" width="8" height="12" fill="rgba(255,255,255,0.1)"/>
+            <circle cx="140" cy="35" r="18" fill="rgba(255,220,100,0.15)"/>
+            <circle cx="140" cy="35" r="10" fill="rgba(255,220,100,0.2)"/>
+          </svg>
+        </div>
+        <div class="room-badge">人氣推薦</div>
+      </div>
+      <div class="room-info">
+        <div class="room-name">山林套房</div>
+        <div class="room-name-en">Forest Suite</div>
+        <div class="room-features">
+          <span class="room-tag">2人入住</span>
+          <span class="room-tag">雙人大床</span>
+          <span class="room-tag">景觀陽台</span>
+          <span class="room-tag">獨立衛浴</span>
+        </div>
+        <div class="room-footer">
+          <div class="room-price">
+            <div class="amount">NT$ 3,800</div>
+            <div class="per">/ 每晚 · 含早餐</div>
+          </div>
+          <button class="room-book" onclick="openBooking('山林套房')">立即訂房</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Room 2 -->
+    <div class="room-card">
+      <div class="room-img">
+        <div class="room-img-bg room-earth" style="display:flex;align-items:center;justify-content:center;">
+          <svg width="180" height="160" viewBox="0 0 180 160" fill="none">
+            <rect x="20" y="80" width="140" height="60" rx="4" fill="rgba(0,0,0,0.25)"/>
+            <rect x="25" y="85" width="130" height="50" rx="3" fill="rgba(255,255,255,0.07)"/>
+            <rect x="20" y="72" width="140" height="12" rx="2" fill="rgba(0,0,0,0.3)"/>
+            <polygon points="30,72 150,72 160,60 20,60" fill="rgba(0,0,0,0.2)"/>
+            <rect x="65" y="105" width="20" height="35" fill="rgba(0,0,0,0.3)"/>
+            <rect x="100" y="110" width="15" height="20" fill="rgba(255,255,255,0.1)"/>
+            <circle cx="35" cy="45" r="15" fill="rgba(255,200,80,0.2)"/>
+            <line x1="35" y1="20" x2="35" y2="70" stroke="rgba(255,200,80,0.15)" stroke-width="2"/>
+          </svg>
+        </div>
+      </div>
+      <div class="room-info">
+        <div class="room-name">溪谷木屋</div>
+        <div class="room-name-en">Valley Cabin</div>
+        <div class="room-features">
+          <span class="room-tag">2-4人入住</span>
+          <span class="room-tag">全原木建材</span>
+          <span class="room-tag">溪谷景觀</span>
+          <span class="room-tag">戶外泡湯</span>
+        </div>
+        <div class="room-footer">
+          <div class="room-price">
+            <div class="amount">NT$ 5,200</div>
+            <div class="per">/ 每晚 · 含早餐</div>
+          </div>
+          <button class="room-book" onclick="openBooking('溪谷木屋')">立即訂房</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Room 3 -->
+    <div class="room-card">
+      <div class="room-img">
+        <div class="room-img-bg room-sky" style="display:flex;align-items:center;justify-content:center;">
+          <svg width="180" height="160" viewBox="0 0 180 160" fill="none">
+            <circle cx="40" cy="40" r="3" fill="rgba(255,255,255,0.7)"/>
+            <circle cx="80" cy="25" r="2" fill="rgba(255,255,255,0.5)"/>
+            <circle cx="130" cy="35" r="4" fill="rgba(255,255,255,0.6)"/>
+            <circle cx="160" cy="55" r="2" fill="rgba(255,255,255,0.4)"/>
+            <circle cx="60" cy="60" r="1.5" fill="rgba(255,255,255,0.5)"/>
+            <circle cx="110" cy="50" r="3" fill="rgba(255,255,255,0.8)"/>
+            <circle cx="150" cy="20" r="2" fill="rgba(255,255,255,0.6)"/>
+            <ellipse cx="90" cy="100" rx="55" ry="30" fill="rgba(255,255,255,0.06)"/>
+            <polygon points="90,55 120,95 60,95" fill="rgba(255,255,255,0.1)"/>
+            <rect x="70" y="95" width="40" height="45" fill="rgba(0,0,0,0.3)"/>
+            <rect x="78" y="110" width="12" height="20" fill="rgba(255,255,255,0.12)"/>
+          </svg>
+        </div>
+        <div class="room-badge" style="background:var(--forest-mid);color:var(--cream);">頂樓景觀</div>
+      </div>
+      <div class="room-info">
+        <div class="room-name">星空閣樓</div>
+        <div class="room-name-en">Stargazing Loft</div>
+        <div class="room-features">
+          <span class="room-tag">2人入住</span>
+          <span class="room-tag">透明天窗</span>
+          <span class="room-tag">360°山景</span>
+          <span class="room-tag">私人露台</span>
+        </div>
+        <div class="room-footer">
+          <div class="room-price">
+            <div class="amount">NT$ 6,800</div>
+            <div class="per">/ 每晚 · 含早餐</div>
+          </div>
+          <button class="room-book" onclick="openBooking('星空閣樓')">立即訂房</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="gallery-section" id="gallery">
+  <div class="section-label">GALLERY · 環境欣賞</div>
+  <h2 class="section-title">用眼睛先旅行</h2>
+  <p class="section-desc">每一個角落都是一幅山林畫作，讓您還未到來便已心動。</p>
+  <div class="gallery-grid">
+    <div class="gallery-item">
+      <div class="gallery-item-bg" style="height:100%;background:linear-gradient(160deg,#1a3320,#2d5e3a,#4a8c5c,#6aae7a);display:flex;align-items:center;justify-content:center;">
+        <svg width="220" height="360" viewBox="0 0 220 360" fill="none">
+          <ellipse cx="110" cy="320" rx="100" ry="18" fill="rgba(0,0,0,0.3)"/>
+          <polygon points="110,30 180,180 40,180" fill="rgba(255,255,255,0.09)"/>
+          <polygon points="110,70 175,190 45,190" fill="rgba(255,255,255,0.07)"/>
+          <polygon points="110,100 165,195 55,195" fill="rgba(255,255,255,0.06)"/>
+          <rect x="85" y="195" width="50" height="105" fill="rgba(0,0,0,0.35)"/>
+          <rect x="95" y="220" width="14" height="20" fill="rgba(255,255,255,0.12)"/>
+          <rect x="111" y="220" width="14" height="20" fill="rgba(255,255,255,0.08)"/>
+          <ellipse cx="50" cy="100" rx="30" ry="40" fill="rgba(74,124,89,0.2)"/>
+          <ellipse cx="170" cy="130" rx="25" ry="35" fill="rgba(74,124,89,0.15)"/>
+          <circle cx="30" cy="50" r="20" fill="rgba(255,210,80,0.15)"/>
+        </svg>
+      </div>
+      <div class="gallery-overlay"><span class="gallery-overlay-text">民宿主體建築</span></div>
+    </div>
+    <div class="gallery-item">
+      <div class="gallery-item-bg" style="height:100%;background:linear-gradient(135deg,#0d2010,#1a4025,#2d6840);display:flex;align-items:center;justify-content:center;">
+        <svg width="140" height="160" viewBox="0 0 140 160" fill="none">
+          <ellipse cx="70" cy="80" rx="50" ry="50" fill="rgba(255,255,255,0.05)"/>
+          <line x1="70" y1="20" x2="70" y2="140" stroke="rgba(122,158,110,0.4)" stroke-width="1.5"/>
+          <line x1="10" y1="80" x2="130" y2="80" stroke="rgba(122,158,110,0.4)" stroke-width="1.5"/>
+          <ellipse cx="70" cy="80" rx="30" ry="30" fill="rgba(255,255,255,0.04)"/>
+          <circle cx="70" cy="80" r="8" fill="rgba(201,168,76,0.4)"/>
+          <text x="70" y="155" text-anchor="middle" fill="rgba(255,255,255,0.3)" font-size="10">晨霧林道</text>
+        </svg>
+      </div>
+      <div class="gallery-overlay"><span class="gallery-overlay-text">晨霧林道</span></div>
+    </div>
+    <div class="gallery-item">
+      <div class="gallery-item-bg" style="height:100%;background:linear-gradient(135deg,#2a1a0a,#5c3a20,#8c6040);display:flex;align-items:center;justify-content:center;">
+        <svg width="140" height="160" viewBox="0 0 140 160" fill="none">
+          <rect x="20" y="40" width="100" height="80" rx="5" fill="rgba(255,255,255,0.07)"/>
+          <rect x="30" y="50" width="35" height="60" rx="3" fill="rgba(255,220,150,0.1)"/>
+          <rect x="75" y="50" width="35" height="60" rx="3" fill="rgba(255,220,150,0.08)"/>
+          <rect x="35" y="120" width="70" height="8" fill="rgba(0,0,0,0.3)"/>
+          <circle cx="70" cy="30" r="12" fill="rgba(255,190,60,0.2)"/>
+          <text x="70" y="155" text-anchor="middle" fill="rgba(255,255,255,0.3)" font-size="10">有機早餐</text>
+        </svg>
+      </div>
+      <div class="gallery-overlay"><span class="gallery-overlay-text">有機早餐</span></div>
+    </div>
+    <div class="gallery-item">
+      <div class="gallery-item-bg" style="height:100%;background:linear-gradient(135deg,#0a0f1a,#1a253d,#2d4060);display:flex;align-items:center;justify-content:center;">
+        <svg width="140" height="160" viewBox="0 0 140 160" fill="none">
+          <circle cx="30" cy="30" r="2" fill="rgba(255,255,255,0.8)"/>
+          <circle cx="80" cy="20" r="3" fill="rgba(255,255,255,0.9)"/>
+          <circle cx="110" cy="40" r="1.5" fill="rgba(255,255,255,0.7)"/>
+          <circle cx="50" cy="55" r="2.5" fill="rgba(255,255,255,0.85)"/>
+          <circle cx="120" cy="25" r="2" fill="rgba(255,255,255,0.6)"/>
+          <circle cx="95" cy="60" r="1.5" fill="rgba(255,255,255,0.75)"/>
+          <circle cx="20" cy="70" r="2" fill="rgba(255,255,255,0.65)"/>
+          <ellipse cx="70" cy="100" rx="55" ry="10" fill="rgba(45,74,45,0.5)"/>
+          <text x="70" y="155" text-anchor="middle" fill="rgba(255,255,255,0.3)" font-size="10">無光害星空</text>
+        </svg>
+      </div>
+      <div class="gallery-overlay"><span class="gallery-overlay-text">無光害星空</span></div>
+    </div>
+    <div class="gallery-item">
+      <div class="gallery-item-bg" style="height:100%;background:linear-gradient(135deg,#1a2e3a,#2d4e5e,#4a7080);display:flex;align-items:center;justify-content:center;">
+        <svg width="140" height="160" viewBox="0 0 140 160" fill="none">
+          <ellipse cx="70" cy="110" rx="55" ry="25" fill="rgba(100,160,200,0.2)"/>
+          <ellipse cx="70" cy="110" rx="45" ry="18" fill="rgba(100,160,200,0.15)"/>
+          <rect x="30" y="85" width="80" height="25" rx="4" fill="rgba(255,255,255,0.1)"/>
+          <circle cx="40" cy="60" r="20" fill="rgba(255,255,255,0.06)"/>
+          <circle cx="100" cy="65" r="15" fill="rgba(255,255,255,0.05)"/>
+          <text x="70" y="155" text-anchor="middle" fill="rgba(255,255,255,0.3)" font-size="10">山泉湯池</text>
+        </svg>
+      </div>
+      <div class="gallery-overlay"><span class="gallery-overlay-text">山泉湯池</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials-section" id="testimonials">
+  <div style="text-align:center;margin-bottom:1rem;">
+    <div class="section-label" style="justify-content:center;display:block;">REVIEWS · 旅客心得</div>
+    <h2 class="section-title" style="margin:0 auto;">聽聽他們的<br>山林故事</h2>
+  </div>
+  <div class="testimonials-grid">
+    <div class="testimonial-card">
+      <div class="testimonial-quote">"</div>
+      <div class="stars">★★★★★</div>
+      <p class="testimonial-text">從台北開了三小時的車，抵達那嚕灣的那一刻，所有疲憊都消散了。清晨被鳥叫聲喚醒，站在陽台看著雲霧在山谷間流動，這才是生活本來的樣子。</p>
+      <div class="testimonial-author">
+        <div class="author-avatar">陳A</div>
+        <div>
+          <div class="author-name">陳小姐</div>
+          <div class="author-date">2024年11月</div>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial-card">
+      <div class="testimonial-quote">"</div>
+      <div class="stars">★★★★★</div>
+      <p class="testimonial-text">星空閣樓真的太神奇了！躺在床上透過透明天窗看星星，銀河清晰可見。老闆推薦的部落文化導覽也非常精彩，對台灣原住民文化有了全新的認識。</p>
+      <div class="testimonial-author">
+        <div class="author-avatar">林B</div>
+        <div>
+          <div class="author-name">林先生</div>
+          <div class="author-date">2024年10月</div>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial-card">
+      <div class="testimonial-quote">"</div>
+      <div class="stars">★★★★★</div>
+      <p class="testimonial-text">帶著孩子來的，沒想到小朋友愛上了生態步道導覽，學到了好多植物知識。有機早餐每樣都好吃，老闆娘手工製作的山菜料理讓我們念念不忘。</p>
+      <div class="testimonial-author">
+        <div class="author-avatar">王C</div>
+        <div>
+          <div class="author-name">王太太</div>
+          <div class="author-date">2024年9月</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BOOKING -->
+<section class="booking-section" id="booking">
+  <div class="booking-container">
+    <div class="booking-left">
+      <div class="section-label">RESERVATION · 訂房服務</div>
+      <h2 class="section-title">預約您的<br>山林時光</h2>
+      <p class="section-desc">我們提供最真誠的服務，從訂房到退房，每一個細節都是為您量身打造的山林體驗。</p>
+      <div class="booking-info-items">
+        <div class="booking-info-item">
+          <div class="booking-info-icon">📍</div>
+          <div>
+            <div class="booking-info-title">地址</div>
+            <div class="booking-info-text">台灣 · 嘉義縣阿里山鄉<br>那嚕灣森林民宿</div>
+          </div>
+        </div>
+        <div class="booking-info-item">
+          <div class="booking-info-icon">📞</div>
+          <div>
+            <div class="booking-info-title">電話訂房</div>
+            <div class="booking-info-text">05-2XX-XXXX<br>週一至週日 08:00 – 21:00</div>
+          </div>
+        </div>
+        <div class="booking-info-item">
+          <div class="booking-info-icon">⏰</div>
+          <div>
+            <div class="booking-info-title">入退房時間</div>
+            <div class="booking-info-text">入住：下午 3:00 後<br>退房：上午 11:00 前</div>
+          </div>
+        </div>
+        <div class="booking-info-item">
+          <div class="booking-info-icon">🌿</div>
+          <div>
+            <div class="booking-info-title">訂房政策</div>
+            <div class="booking-info-text">預約後3日內匯款確認<br>入住前7日免費取消</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="booking-form" id="bookingForm">
+      <h3>線上訂房申請</h3>
+      <div class="form-group">
+        <label>姓名 NAME</label>
+        <input type="text" id="fname" placeholder="請輸入姓名" />
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>電話 PHONE</label>
+          <input type="tel" id="fphone" placeholder="0912-345-678" />
+        </div>
+        <div class="form-group">
+          <label>電子信箱 EMAIL</label>
+          <input type="email" id="femail" placeholder="your@email.com" />
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>入住日期 CHECK-IN</label>
+          <input type="date" id="fcheckin" />
+        </div>
+        <div class="form-group">
+          <label>退房日期 CHECK-OUT</label>
+          <input type="date" id="fcheckout" />
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>房型 ROOM</label>
+          <select id="froom">
+            <option value="">請選擇房型</option>
+            <option>山林套房 · NT$3,800/晚</option>
+            <option>溪谷木屋 · NT$5,200/晚</option>
+            <option>星空閣樓 · NT$6,800/晚</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>人數 GUESTS</label>
+          <select id="fguests">
+            <option>1 位</option>
+            <option selected>2 位</option>
+            <option>3 位</option>
+            <option>4 位</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>特殊需求 SPECIAL REQUEST</label>
+        <textarea id="frequest" rows="3" placeholder="如有特殊需求或想了解的事項，歡迎告知..."></textarea>
+      </div>
+      <button class="form-submit" onclick="submitBooking()">送出訂房申請</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">
+    <div class="logo">那嚕灣森林民宿</div>
+    <p>隱於山林之中，讓森林的呼吸成為您最好的療癒。回歸自然，找回最真實的自己。</p>
+    <div class="contact">
+      📍 嘉義縣阿里山鄉<br>
+      📞 05-2XX-XXXX<br>
+      ✉️ hello@naluwan.com.tw
+    </div>
+  </div>
+  <div class="footer-col">
+    <h4>客房資訊</h4>
+    <ul>
+      <li><a href="#rooms">山林套房</a></li>
+      <li><a href="#rooms">溪谷木屋</a></li>
+      <li><a href="#rooms">星空閣樓</a></li>
+      <li><a href="#rooms">客房設施</a></li>
+    </ul>
+  </div>
+  <div class="footer-col">
+    <h4>旅遊資訊</h4>
+    <ul>
+      <li><a href="#">交通指南</a></li>
+      <li><a href="#">周邊景點</a></li>
+      <li><a href="#">活動體驗</a></li>
+      <li><a href="#">部落文化</a></li>
+    </ul>
+  </div>
+  <div class="footer-col">
+    <h4>服務條款</h4>
+    <ul>
+      <li><a href="#">訂房政策</a></li>
+      <li><a href="#">取消規定</a></li>
+      <li><a href="#">隱私政策</a></li>
+      <li><a href="#booking">聯絡我們</a></li>
+    </ul>
+  </div>
+</footer>
+<div class="footer-bottom">
+  <p>© 2024 那嚕灣森林民宿 Naluwan Forest Villa. All Rights Reserved.</p>
+  <p>用心守護山林，永續旅遊共好</p>
+</div>
+
+<!-- SUCCESS MODAL -->
+<div class="modal-overlay" id="successModal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal()">×</button>
+    <div class="success-icon">🌿</div>
+    <h3>訂房申請已送出！</h3>
+    <p>感謝您選擇那嚕灣森林民宿。我們將在24小時內以電話或Email與您確認訂房細節，期待在山林中與您相遇。</p>
+    <button class="btn-primary" style="width:100%;padding:0.9rem;" onclick="closeModal()">好的，期待入住！</button>
+  </div>
+</div>
+
+<script>
+  // Set default dates
+  const today = new Date();
+  const tomorrow = new Date(today); tomorrow.setDate(today.getDate() + 1);
+  const dayAfter = new Date(today); dayAfter.setDate(today.getDate() + 2);
+  const fmt = d => d.toISOString().split('T')[0];
+
+  document.getElementById('checkin').value = fmt(tomorrow);
+  document.getElementById('checkout').value = fmt(dayAfter);
+  document.getElementById('fcheckin').value = fmt(tomorrow);
+  document.getElementById('fcheckout').value = fmt(dayAfter);
+
+  function scrollToBooking() {
+    document.getElementById('booking').scrollIntoView({ behavior: 'smooth' });
+  }
+
+  function openBooking(roomName) {
+    document.getElementById('froom').value = roomName.includes('山林') ? '山林套房 · NT$3,800/晚' :
+      roomName.includes('溪谷') ? '溪谷木屋 · NT$5,200/晚' : '星空閣樓 · NT$6,800/晚';
+    document.getElementById('booking').scrollIntoView({ behavior: 'smooth' });
+  }
+
+  function searchRooms() {
+    document.getElementById('rooms').scrollIntoView({ behavior: 'smooth' });
+  }
+
+  function submitBooking() {
+    const name = document.getElementById('fname').value;
+    const phone = document.getElementById('fphone').value;
+    const email = document.getElementById('femail').value;
+    const room = document.getElementById('froom').value;
+
+    if (!name || !phone || !email || !room) {
+      alert('請填寫必要資訊（姓名、電話、信箱、房型）');
+      return;
+    }
+    document.getElementById('successModal').classList.add('active');
+  }
+
+  function closeModal() {
+    document.getElementById('successModal').classList.remove('active');
+  }
+
+  // Animate on scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.style.opacity = '1';
+        e.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.feature-card, .room-card, .testimonial-card').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(20px)';
+    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    observer.observe(el);
+  });
+</script>
+</body>
+</html>
